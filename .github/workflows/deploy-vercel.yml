@@ -1,15 +1,14 @@
-name: Pull Request
+name: Deploy - Vercel
 
 on:
-  pull_request:
-    branches:
-      - master
+  workflow_call:
 
 jobs:
-  pr-check:
+  deploy-vercel:
     environment:
-      name: 'Preview'
+      name: 'Staging'
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,10 +22,13 @@ jobs:
       - name: Run unit tests
         run: npm run test
 
-      - name: Deploy app to Vercel preview env
+      - name: Build app
+        run: npm run build
+
+      - name: Deploy app to Vercel production env
         uses: ./.github/actions/deploy-vercel
         with:
-          mode: 'preview'
+          mode: 'production'
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
