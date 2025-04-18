@@ -42,6 +42,6 @@ jobs:
 
   e2e:
     needs: deploy-netlify
-    uses: ./.github/workflows/e2e-tests.yml
+    uses: ./.github/actions/run-e2e
     with:
       base_url: ${{ needs.deploy-netlify.outputs.deploy-url }}
