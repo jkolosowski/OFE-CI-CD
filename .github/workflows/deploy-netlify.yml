@@ -26,6 +26,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Netlify
+        id: deploy
         uses: nwtgck/actions-netlify@v3.0
         with:
           publish-dir: './dist'
@@ -35,3 +36,12 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+    outputs:
+      deploy-url: ${{ steps.deploy.outputs.deploy-url }}
+
+  e2e:
+    needs: deploy-netlify
+    uses: ./.github/workflows/e2e-tests.yml
+    with:
+      base_url: ${{ needs.deploy-netlify.outputs.deploy-url }}
