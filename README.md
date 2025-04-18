@@ -1,4 +1,4 @@
-# Opanuj Frontend: AI Edition - Frontend Bootstrap
+# Rick and Morty - Fan Service
 
 ![](./_resources/img/header.png)
 
