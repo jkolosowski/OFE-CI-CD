@@ -1,0 +1,27 @@
+name: E2E Tests
+
+on:
+  workflow_call:
+    inputs:
+      base_url:
+        required: true
+        type: string
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure node
+        uses: ./.github/actions/setup-project
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+        env:
+          E2E_BASE_URL: ${{ inputs.base_url }}
