@@ -1,4 +1,4 @@
-# Rick and Morty - Fan Service
+# Rick and Morty
 
 ![](./_resources/img/header.png)
 
