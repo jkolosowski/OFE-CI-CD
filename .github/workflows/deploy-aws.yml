@@ -1,4 +1,4 @@
-name: Deploy - AWSS
+name: Deploy - AWS
 
 on:
   workflow_dispatch:
