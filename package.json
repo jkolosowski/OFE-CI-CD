@@ -31,10 +31,12 @@
     "prettier": "3.2.5",
     "tailwindcss": "3.4.1",
     "typescript": "5.4.3",
-    "vite": "6.2.6",
+    "vite": "6.3.5",
     "vitest": "3.1.1"
   },
   "dependencies": {
+    "@featurevisor/react": "1.35.3",
+    "@featurevisor/sdk": "1.35.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.22.3"
